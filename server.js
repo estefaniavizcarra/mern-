@@ -12,6 +12,9 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/books";
+
+mongoose.connect(MONGODB_URI);
 // Add routes, both API and view
 app.use(routes);
 
